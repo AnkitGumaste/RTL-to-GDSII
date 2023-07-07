@@ -1,0 +1,89 @@
+Cadence Genus(TM) Synthesis Solution.
+Copyright 2022 Cadence Design Systems, Inc. All rights reserved worldwide.
+Cadence and the Cadence logo are registered trademarks and Genus is a trademark
+of Cadence Design Systems, Inc. in the United States and other countries.
+
+[05:08:11.095609] Configured Lic search path (21.01-s002): 5280@cadence
+
+Version: 21.14-s082_1, built Thu Jun 23 11:32:08 PDT 2022
+Options: 
+Date:    Mon Jul 03 05:08:11 2023
+Host:    cad16 (x86_64 w/Linux 4.18.0-425.3.1.el8.x86_64) (12cores*20cpus*1physical cpu*12th Gen Intel(R) Core(TM) i7-12700 25600KB) (15871148KB)
+PID:     32427
+OS:      Red Hat Enterprise Linux release 8.7 (Ootpa)
+
+
+[05:08:11.323009] Periodic Lic check successful
+[05:08:11.323017] Feature usage summary:
+[05:08:11.323017] Genus_Synthesis
+Checking out license: Genus_Synthesis
+
+
+***********************************************************************************************************
+***********************************************************************************************************
+
+
+
+Loading tool scripts...
+Finished loading tool scripts (4 seconds elapsed).
+
+WARNING: This version of the tool is 374 days old.
+@genus:root: 1> source rcscript.tcl
+Sourcing './rcscript.tcl' (Mon Jul 03 05:08:28 EDT 2023)...
+#@ Begin verbose source ./rcscript.tcl
+@file(rcscript.tcl) 2: set_db init_lib_search_path /home/install/FOUNDRY/digital/90nm/dig/lib/
+  Setting attribute of root '/': 'init_lib_search_path' = /home/install/FOUNDRY/digital/90nm/dig/lib/
+@file(rcscript.tcl) 3: set_db hdl_search_path /home/student/Documents/RTL2GDS_Counter
+Warning : This attribute will be obsolete in a next major release. [TUI-32]
+        : attribute: 'hdl_search_path', object type: 'root'
+        : Attribute 'hdl_search_path' is going to be obsoleted, use the new attribute 'init_hdl_search_path'.
+  Setting attribute of root '/': 'hdl_search_path' = /home/student/Documents/RTL2GDS_Counter
+@file(rcscript.tcl) 4: set_db library slow.lib
+
+Threads Configured:3
+
+  Message Summary for Library slow.lib:
+  *************************************
+  Missing a function attribute in the output pin definition. [LBR-518]: 1
+  Missing library level attribute. [LBR-516]: 1
+  *************************************
+ 
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 0.900000, 125.000000) in library 'slow.lib'.
+        : The nominal operating condition is represented, either by the nominal PVT values specified in the library source (via nom_process,nom_voltage and nom_temperature respectively), or by the default PVT values (1.0,1.0,1.0).
+  Setting attribute of root '/': 'library' = slow.lib
+@file(rcscript.tcl) 5: read_hdl counter.v
+if(rst)
+   |
+Warning : Inconsistent reference of edge signal. [VLOGPT-418]
+        : Wrong polarity for edge signal 'rst' in file '/home/student/Documents/RTL2GDS_Counter/counter.v' on line 18, column 4.
+        : If the set signal 'set_sig' is a posedge signal, the if statement should use ( set_sig ) as the testing condition.
+e.g.
+    always @(posedge clk or posedge set_sig)
+        if ( set_sig)
+ 
+If the set signal 'set_sig' is a negedge signal, the if statement should use (! set_sig ) as the testing condition.
+e.g.
+    always @(posedge clk or negedge set_sig)
+        if ( ! set_sig).
+@file(rcscript.tcl) 6: elaborate
+  Library has 324 usable logic and 128 usable sequential lib-cells.
+Info    : Elaborating Design. [ELAB-1]
+        : Elaborating top-level block 'counter' from file '/home/student/Documents/RTL2GDS_Counter/counter.v'.
+Error   : Unsynthesizable Process. [CDFG-364] [elaborate]
+        : in file '/home/student/Documents/RTL2GDS_Counter/counter.v' on line 16.
+        : Error during elaboration.
+Info    : Unable to elaborate the design. [ELAB-4]
+        : Module 'counter' contains errors and cannot be elaborated.
+UM:   flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   elaborate
+#@ End verbose source ./rcscript.tcl
+1
+@genus:root: 2> exit
+
+Lic Summary:
+[05:09:25.100904] Cdslmd servers: cadence
+[05:09:25.100905] Feature usage summary:
+[05:09:25.100905] Genus_Synthesis
+
+Normal exit.
